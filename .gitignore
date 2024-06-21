@@ -157,6 +157,7 @@ cython_debug/
 # Model and data directories
 models/
 data/
+workspace/
 
 # Library-specific directories and files
 *.npy  # Numpy array files
