@@ -38,7 +38,7 @@ with open('models/lin_reg.bin', 'rb') as f_in:
 
 raw_data = pd.read_parquet('data/green_tripdata_2024-03.parquet')
 
-#Need to read the data day by day
+#Need to read the data day by day, from March 1, 2024
 begin = datetime.datetime(2024, 3, 1, 0, 0)
 num_features = ['passenger_count', 'trip_distance', 'fare_amount', 'total_amount']
 cat_features = ['PULocationID', 'DOLocationID']
