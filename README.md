@@ -26,3 +26,6 @@ This Python script utilizes the `Evidently` library to monitor key model perform
 ### 4. Open the Grafana UI to View the Dashboards
 
 Navigate to http://localhost:3000/
+
+![image](https://github.com/Mannerow/mlops-homework-05/assets/47371658/0f415460-82c9-4e51-b7e4-627045cddd8e)
+
