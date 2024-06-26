@@ -1,13 +1,16 @@
 version: '3.7'
 
-volumes: 
-  grafana_data: {}
-
-networks:
-  front-tier:
-  back-tier:
-
 services:
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "8000:8000"
+    networks:
+      - back-tier
+    restart: always
+
   db:
     image: postgres
     restart: always
@@ -30,6 +33,10 @@ services:
   grafana:
     image: grafana/grafana
     user: "472"
+    environment:
+      GF_DATABASE_USER: postgres
+      GF_DATABASE_PASSWORD: example
+      GF_DATABASE_NAME: test
     ports:
       - "3000:3000"
     volumes:
@@ -39,4 +46,10 @@ services:
     networks:
       - back-tier
       - front-tier
-    restart: always
+
+networks:
+  front-tier:
+  back-tier:
+
+volumes:
+  grafana_data: {}

@@ -61,12 +61,12 @@ report = Report(metrics=[
 
 @task
 def prep_db():
-	with psycopg.connect("host=localhost port=5432 user=postgres password=example", autocommit=True) as conn:
-		res = conn.execute("SELECT 1 FROM pg_database WHERE datname='test'")
-		if len(res.fetchall()) == 0:
-			conn.execute("create database test;")
-		with psycopg.connect("host=localhost port=5432 dbname=test user=postgres password=example") as conn:
-			conn.execute(create_table_statement)
+    with psycopg.connect("host=db port=5432 user=postgres password=example", autocommit=True) as conn:
+        res = conn.execute("SELECT 1 FROM pg_database WHERE datname='test'")
+        if len(res.fetchall()) == 0:
+            conn.execute("create database test;")
+        with psycopg.connect("host=db port=5432 dbname=test user=postgres password=example") as conn:
+            conn.execute(create_table_statement)
 
 @task
 def calculate_metrics_postgresql(curr, i):
@@ -100,7 +100,7 @@ def calculate_metrics_postgresql(curr, i):
 def batch_monitoring_backfill():
 	prep_db()
 	last_send = datetime.datetime.now() - datetime.timedelta(seconds=10)
-	with psycopg.connect("host=localhost port=5432 dbname=test user=postgres password=example", autocommit=True) as conn:
+	with psycopg.connect("host=db port=5432 dbname=test user=postgres password=example", autocommit=True) as conn:
 		#31 days in march
 		for i in range(0, 30):
 			with conn.cursor() as curr:
