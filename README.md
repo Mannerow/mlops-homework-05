@@ -25,5 +25,4 @@ Navigate to http://localhost:3000/
 
 Open the Dashboard titled 'Taxi Duration Prediction'
 
-![image](https://github.com/Mannerow/mlops-homework-05/assets/47371658/0f415460-82c9-4e51-b7e4-627045cddd8e)
-
+![image](https://github.com/Mannerow/mlops-homework-05/assets/47371658/ef919baa-76f7-49a7-8945-4940e449dc17)
